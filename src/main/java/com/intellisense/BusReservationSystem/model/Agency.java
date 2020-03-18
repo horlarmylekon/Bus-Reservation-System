@@ -15,6 +15,6 @@ public class Agency extends AbstractEntity {
     @Column(name = "details", nullable = false)
     private String details;
 
-    @OneToMany
-    private User userId;
+    @ManyToOne
+    private User user;
 }

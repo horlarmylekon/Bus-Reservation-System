@@ -15,6 +15,6 @@ public class Bus extends AbstractEntity {
     @Column(name = "type", nullable = false)
     private String type;
 
-    @OneToMany
-    private Agency agencyId;
+    @ManyToOne
+    private Agency agency;
 }

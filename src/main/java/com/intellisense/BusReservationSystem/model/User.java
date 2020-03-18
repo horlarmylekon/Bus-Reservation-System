@@ -25,7 +25,6 @@ public class User extends AbstractEntity{
     @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "role")
     @OneToOne
-    private List<Role> roles;
+    private Role role;
 }

@@ -14,7 +14,7 @@ public class TripSchedule extends AbstractEntity{
     private int availableSeats;
 
     @Column(name = "tripDetails", nullable = false)
-    private Trip tripDetails;
+    private String tripDetails;
 
     @Column(name = "ticketSold", nullable = false)
     private String ticketSold;

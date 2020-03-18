@@ -13,14 +13,14 @@ public class Trip extends AbstractEntity{
     private String journeyTime;
 
     @Column(name = "sourceStop", nullable = false)
-    private Stop sourceStop;
+    private String sourceStop;
 
     @Column(name = "destinationStop", nullable = false)
-    private Stop destinationStop;
+    private String destinationStop;
 
-    @ManyToOne
+    @OneToOne
     private Bus bus;
 
-    @OneToMany
+    @ManyToOne
     private Agency agency;
 }

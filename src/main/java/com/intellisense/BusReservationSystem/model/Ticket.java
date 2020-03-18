@@ -1,9 +1,6 @@
 package com.intellisense.BusReservationSystem.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "TICKET")
@@ -18,8 +15,8 @@ public class Ticket extends AbstractEntity{
     @Column(name = "journeyDate", nullable = false)
     private String journeyDate;
 
-    @OneToMany
+    @ManyToOne
     private User passenger;
 
-    private TripSchedule tripSchedule;
+    private String tripSchedule;
 }
