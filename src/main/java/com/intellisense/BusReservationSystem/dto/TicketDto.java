@@ -7,4 +7,11 @@ public class TicketDto {
     interface or the api response demands
      */
     private Long id;
+    private int seatNumber;
+    private boolean cancellable;
+    private String journeyDate;
+    private String sourceStop;
+    private String destinationStop;
+    private String passengerName;
+    private String passengerMobileNumber;
 }

@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 
 @Entity
 @Table(name = "User")
+@Access(value = AccessType.FIELD)
 public class User extends AbstractEntity{
 
     @Column(name = "firstName", nullable = false)
@@ -28,12 +30,14 @@ public class User extends AbstractEntity{
     @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
+    @Column(name = "active")
+    private boolean active;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     private Set<Role> roles;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "owner", orphanRemoval = true)
     @JsonIgnore
     private List<Agency> agencies;
 

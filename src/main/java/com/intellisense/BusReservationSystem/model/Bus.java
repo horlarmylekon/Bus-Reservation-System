@@ -6,10 +6,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Bus")
+@Access(value = AccessType.FIELD)
 public class Bus extends AbstractEntity {
 
-    @Column(name = "code", nullable = false, unique = true)
-    private String code;
+    @Column(name = "plateNumber", nullable = false, unique = true)
+    private String plateNumber;
 
     @Column(name = "capacity", nullable = false)
     private int capacity;
@@ -25,35 +26,5 @@ public class Bus extends AbstractEntity {
     @JsonIgnore
     private Trip trip;
 
-    public String getCode() {
-        return code;
-    }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Agency getAgency() {
-        return agency;
-    }
-
-    public void setAgency(Agency agency) {
-        this.agency = agency;
-    }
 }

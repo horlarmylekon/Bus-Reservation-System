@@ -7,4 +7,7 @@ public class StopDto {
     interface or the api response demands
      */
     private Long id;
+    private String name;
+    private String code;
+    private String detail;
 }

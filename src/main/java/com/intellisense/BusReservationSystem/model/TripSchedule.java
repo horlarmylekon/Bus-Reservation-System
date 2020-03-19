@@ -1,27 +1,26 @@
 package com.intellisense.BusReservationSystem.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
+
 @Entity
-@Table(name = "TripShedule")
+@Table(name = "TripSchedule")
+@Access(value = AccessType.FIELD)
 public class TripSchedule extends AbstractEntity{
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "tripDate", nullable = false)
-    private String tripDate;
+    private Date tripDate;
 
     @Column(name = "availableSeats", nullable = false)
     private int availableSeats;
 
-    @Column(name = "tripDetails", nullable = false)
-    private String tripDetails;
-
-    @Column(name = "ticketSold", nullable = false)
-    private String ticketSold;
 
     @OneToOne
-    private Trip trip;
+    private Trip tripDetail;
 
-    @OneToOne
-    private Ticket ticket;
+    @OneToMany
+    private List<Ticket> ticketsSold;
 }

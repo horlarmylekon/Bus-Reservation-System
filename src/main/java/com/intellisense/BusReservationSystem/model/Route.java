@@ -8,6 +8,7 @@ import java.util.Map;
 
 @Entity
 @Table(name = "route")
+@Access(value = AccessType.FIELD)
 public class Route extends AbstractEntity{
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "route")

@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Stop")
+@Access(value = AccessType.FIELD)
 public class Stop extends AbstractEntity{
 
     @Column(name = "code", nullable = false, unique = true)
@@ -12,7 +13,7 @@ public class Stop extends AbstractEntity{
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "details", nullable = false)
+    @Column(name = "details")
     private String details;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "source", orphanRemoval = true)

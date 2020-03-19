@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Agency")
+@Access(value = AccessType.FIELD)
 public class Agency extends AbstractEntity {
 
     @Column(name = "code", nullable = false, unique = true)
@@ -20,46 +22,16 @@ public class Agency extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "userid")
-    private User user;
+    private User owner;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "agency", orphanRemoval = true)
     @JsonIgnore
-    private List<Bus> bus;
+    private Set<Bus> buses;
 
     @ManyToMany
     @JoinTable(name = "agency_trip", joinColumns = @JoinColumn(name = "agency_id")
             ,inverseJoinColumns = @JoinColumn(name = "trip_id"))
     private List<Trip> trips;
 
-    public String getCode() {
-        return code;
-    }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

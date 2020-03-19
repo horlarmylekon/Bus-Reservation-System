@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Role")
+@Access(value = AccessType.FIELD)
 public class Role extends AbstractEntity{
 
     @Column(name = "name", nullable = false)
