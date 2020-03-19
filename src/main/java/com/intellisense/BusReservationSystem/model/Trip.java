@@ -1,6 +1,8 @@
 package com.intellisense.BusReservationSystem.model;
 
 import javax.persistence.*;
+import java.math.RoundingMode;
+import java.util.List;
 
 @Entity
 @Table(name = "Trip")
@@ -12,15 +14,20 @@ public class Trip extends AbstractEntity{
     @Column(name = "journeyTime", nullable = false)
     private String journeyTime;
 
-    @Column(name = "sourceStop", nullable = false)
-    private String sourceStop;
+    @OneToMany
+    @JoinColumn(name = "bus-id")
+    private List<Bus> bus;
 
-    @Column(name = "destinationStop", nullable = false)
-    private String destinationStop;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "trips")
+    private List<Agency> agencies;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "route_id")
+    private Route route;
 
     @OneToOne
-    private Bus bus;
+    private TripSchedule tripSchedule;
 
-    @ManyToOne
-    private Agency agency;
+
+
 }

@@ -18,4 +18,10 @@ public class TripSchedule extends AbstractEntity{
 
     @Column(name = "ticketSold", nullable = false)
     private String ticketSold;
+
+    @OneToOne
+    private Trip trip;
+
+    @OneToOne
+    private Ticket ticket;
 }

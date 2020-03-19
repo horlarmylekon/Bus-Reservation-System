@@ -3,7 +3,7 @@ package com.intellisense.BusReservationSystem.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TICKET")
+@Table(name = "Ticket")
 public class Ticket extends AbstractEntity{
 
     @Column(name = "seatNumber", nullable = false)
@@ -18,5 +18,6 @@ public class Ticket extends AbstractEntity{
     @ManyToOne
     private User passenger;
 
-    private String tripSchedule;
+    @OneToOne
+    private TripSchedule tripSchedule;
 }

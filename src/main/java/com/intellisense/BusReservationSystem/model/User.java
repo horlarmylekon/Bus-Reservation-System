@@ -1,9 +1,12 @@
 package com.intellisense.BusReservationSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "User")
@@ -25,6 +28,15 @@ public class User extends AbstractEntity{
     @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
-    @OneToOne
-    private Role role;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    private Set<Role> roles;
+
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user", orphanRemoval = true)
+    @JsonIgnore
+    private List<Agency> agencies;
+
+    @OneToMany
+    private List<Ticket> ticket;
 }
