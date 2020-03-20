@@ -1,9 +1,7 @@
 package com.intellisense.BusReservationSystem.model;
 
 import javax.persistence.*;
-import java.math.RoundingMode;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
